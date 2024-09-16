@@ -21,7 +21,6 @@ const Home: React.FC = () => {
   const employeeProjectReviewDetails = useSelector((state: RootState) => selectEmployeeProjectReviewDetails(state));
 
   useEffect(() => {
-
     const initialProjects = projects.map(proj => {
       const currentDevelopers = employees
         .filter(emp => emp.currentProject === proj.name)
@@ -31,6 +30,7 @@ const Home: React.FC = () => {
         currentDevelopers: currentDevelopers.length > 0 ? currentDevelopers : [],
         codeReviewers: proj.reviewers,
         fixedReviewer: proj.fixedReviewer,
+        reviewers: proj.reviewers,
       };
     });
     dispatch(setProjects(initialProjects));
